@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SN Dastur — Telegram bot va sayt yasash xizmati</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3f6fb; --surface:#ffffff; --ink:#10223a; --muted:#51647d;
+  --accent:#1d7cf2; --accent-ink:#ffffff; --line:#d7e0ec; --chat-me:#dff0ff; --chat-bot:#ffffff;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0c1624; --surface:#14233a; --ink:#e8f0fb; --muted:#9fb2cb;
+    --accent:#4a9bff; --accent-ink:#06131f; --line:#243a58; --chat-me:#1c4272; --chat-bot:#1a2d49;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0c1624; --surface:#14233a; --ink:#e8f0fb; --muted:#9fb2cb;
+  --accent:#4a9bff; --accent-ink:#06131f; --line:#243a58; --chat-me:#1c4272; --chat-bot:#1a2d49;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Onest,system-ui,sans-serif;line-height:1.6;font-size:17px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:Unbounded,Onest,sans-serif;line-height:1.15;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:14px 26px;border-radius:999px;font-weight:600;text-decoration:none}
+.btn.alt{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+header.top{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+.logo{font-family:Unbounded,sans-serif;font-weight:800;font-size:20px;text-decoration:none}
+.logo span{color:var(--accent)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:40px 0 70px}
+.hero h1{font-size:clamp(30px,5vw,52px);font-weight:800}
+.hero p{color:var(--muted);max-width:46ch;margin:20px 0 28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.chat{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.chat .head{font-weight:600;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:4px}
+.msg{padding:10px 14px;border-radius:16px;max-width:85%;font-size:15px}
+.msg.me{background:var(--chat-me);align-self:flex-end;border-bottom-right-radius:4px}
+.msg.bot{background:var(--chat-bot);border:1px solid var(--line);border-bottom-left-radius:4px}
+section{padding:56px 0}
+section h2{font-size:clamp(24px,3.6vw,34px);margin-bottom:12px}
+.lead{color:var(--muted);max-width:56ch;margin:0 0 32px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px}
+.card h3{font-size:18px;margin-bottom:8px}
+.card p{margin:0;color:var(--muted);font-size:16px}
+.card ul{margin:12px 0 0;padding-left:18px;color:var(--muted);font-size:15px}
+.steps{display:grid;gap:14px;counter-reset:s;padding:0;list-style:none;margin:0}
+.steps li{counter-increment:s;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 20px 18px 64px;position:relative}
+.steps li::before{content:counter(s);position:absolute;left:18px;top:16px;width:32px;height:32px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-weight:700;display:grid;place-items:center}
+.steps b{display:block}
+.steps span{color:var(--muted);font-size:15px}
+.contact{background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:40px 28px;text-align:center}
+.contact p{color:var(--muted);margin:12px auto 26px;max-width:46ch}
+footer{padding:30px 0 40px;text-align:center;color:var(--muted);font-size:14px}
+@media (max-width:760px){.hero{grid-template-columns:1fr;padding-bottom:40px}}
+@media (prefers-reduced-motion:no-preference){.msg{animation:in .5s both}.msg:nth-child(3){animation-delay:.5s}.msg:nth-child(4){animation-delay:1s}.msg:nth-child(5){animation-delay:1.5s}}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="#">SN <span>Dastur</span></a>
+    <a class="btn" href="https://t.me/sn_dastur">Telegram kanal</a>
+  </header>
+
+  <div class="hero">
+    <div>
+      <h1>Biznesingiz uchun Telegram bot va sayt tayyorlaymiz</h1>
+      <p>SN Dastur jamoasi mijozlaringizni avtomatik qabul qiladigan bot va buyurtma olib keladigan sayt yasaydi. Fikrdan tayyor loyihagacha — bir joyda.</p>
+      <div class="cta">
+        <a class="btn" href="https://t.me/SnRasmiyBot">Buyurtma berish</a>
+        <a class="btn alt" href="#xizmatlar">Xizmatlarni ko‘rish</a>
+      </div>
+    </div>
+    <div class="chat" aria-hidden="true">
+      <div class="head">SN Dastur bot</div>
+      <div class="msg me">Salom, do‘konim uchun bot kerak</div>
+      <div class="msg bot">Salom! Mahsulot katalogi, savat va to‘lovni ulaymiz.</div>
+      <div class="msg me">Narxi va muddati qancha?</div>
+      <div class="msg bot">Vazifani yozing, 1 soat ichida javob beramiz.</div>
+    </div>
+  </div>
+
+  <section id="xizmatlar">
+    <h2>Nima yasab beramiz</h2>
+    <p class="lead">Har bir loyiha sizning biznesingiz uchun alohida yoziladi.</p>
+    <div class="grid">
+      <div class="card"><h3>Telegram botlar</h3><p>Mijozlar bilan 24/7 ishlaydigan botlar.</p>
+        <ul><li>Do‘kon va buyurtma boti</li><li>To‘lov tizimlari bilan ulanish</li><li>Admin panel va xabar yuborish</li></ul></div>
+      <div class="card"><h3>Saytlar</h3><p>Telefonda ham, kompyuterda ham qulay ishlaydigan saytlar.</p>
+        <ul><li>Vizitka va landing sahifa</li><li>Internet do‘kon</li><li>Tezkor va zamonaviy dizayn</li></ul></div>
+      <div class="card"><h3>Reklama uchun sahifa</h3><p>Mahsulot yoki xizmatingizni sotadigan bitta aniq sahifa.</p>
+        <ul><li>Ariza qoldirish formasi</li><li>Telegram bilan bog‘lash</li></ul></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Qanday ishlaymiz</h2>
+    <p class="lead">Jarayon sodda va har bosqichda siz bilan aloqada bo‘lamiz.</p>
+    <ol class="steps">
+      <li><b>Murojaat</b><span>Telegramda g‘oyangizni yozing.</span></li>
+      <li><b>Kelishuv</b><span>Vazifa, narx va muddatni aniqlaymiz.</span></li>
+      <li><b>Yaratish</b><span>Loyihani yasab, natijani sizga ko‘rsatamiz.</span></li>
+      <li><b>Topshirish</b><span>Tayyor loyihani ishga tushiramiz va yordam beramiz.</span></li>
+    </ol>
+  </section>
+
+  <section>
+    <div class="contact">
+      <h2>Loyihangizni boshlaymizmi?</h2>
+      <p>Telegram kanalimizga qo‘shiling yoki to‘g‘ridan-to‘g‘ri yozing — bot va sayt bo‘yicha barcha savollarga javob beramiz.</p>
+      <a class="btn" href="https://t.me/sn.rasmiy">Telegramda yozish</a>
+    </div>
+  </section>
+
+  <footer>© 2026 SN Dastur. Barcha huquqlar himoyalangan.</footer>
+</div>
+</body>
+</html>
